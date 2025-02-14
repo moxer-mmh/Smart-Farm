@@ -1,77 +1,263 @@
 # Smart Farm Project 🌱
 
-## Description
+## Overview
 
-Smart Farm is an innovative agricultural management system that leverages artificial intelligence and robotics for optimizing crop cultivation in multi-span greenhouses and open fields in Algeria. The project is developed in collaboration with CDTA (Centre de Développement des Technologies Avancées) and focuses on tomato and potato crops monitoring using advanced technologies.
-
-## Features
-
-* 🔍 Real-time plant disease detection
-* 📊 Environmental measurements monitoring
-* 🤖 Integration with agricultural robotics
-* 🌡️ Climate control in multi-span greenhouses
-* 🔐 Secure user authentication and authorization
-* 📱 GraphQL API for flexible data queries
+Smart Farm is an innovative agricultural management system that leverages artificial intelligence, robotics, and IoT to optimize crop cultivation in both multi-span greenhouses and open fields in Algeria. Developed in collaboration with CDTA (Centre de Développement des Technologies Avancées), this project focuses on real-time plant disease detection, environmental monitoring, and seamless robotics integration for crops such as tomatoes and potatoes.
 
 ## Technology Stack
 
 ### Backend
 
-* FastAPI
-* SQLAlchemy & Alembic
-* Pydantic
-* JWT Authentication
-* GraphQL
-* SQLite/MySQL/PostgreSQL
+- **Framework:** FastAPI
+- **Database:** SQLite/MySQL/PostgreSQL (managed with SQLAlchemy and Alembic)
+- **API:** REST and GraphQL
+- **Authentication:** JWT Authentication
+- **Tools:** Pydantic, Alembic for database migrations
 
-## Project Structure
+### Frontend
 
-<pre><div class="relative flex flex-col rounded-lg" bis_skin_checked="1"><div class="text-text-300 absolute pl-3 pt-2.5 text-xs" bis_skin_checked="1"></div><div class="pointer-events-none sticky my-0.5 ml-0.5 flex items-center justify-end px-1.5 py-1 mix-blend-luminosity top-0" bis_skin_checked="1"><div class="from-bg-300/90 to-bg-300/70 pointer-events-auto rounded-md bg-gradient-to-b p-0.5 backdrop-blur-md" bis_skin_checked="1"><button class="flex flex-row items-center gap-1 rounded-md p-1 py-0.5 text-xs transition-opacity delay-100 hover:bg-bg-200 opacity-60 hover:opacity-100"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 256 256" class="text-text-500 mr-px -translate-y-[0.5px]"><path d="M200,32H163.74a47.92,47.92,0,0,0-71.48,0H56A16,16,0,0,0,40,48V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V48A16,16,0,0,0,200,32Zm-72,0a32,32,0,0,1,32,32H96A32,32,0,0,1,128,32Zm72,184H56V48H82.75A47.93,47.93,0,0,0,80,64v8a8,8,0,0,0,8,8h80a8,8,0,0,0,8-8V64a47.93,47.93,0,0,0-2.75-16H200Z"></path></svg><span class="text-text-200 pr-0.5">Copy</span></button></div></div><div bis_skin_checked="1"><div class="code-block__code !my-0 !rounded-lg !text-sm !leading-relaxed" bis_skin_checked="1"><code><span><span>backend/
-</span></span><span>├── alembic/          # Database migrations
-</span><span>├── app/
-</span><span>│   ├── api/          # API endpoints and GraphQL schema
-</span><span>│   ├── core/         # Core configurations
-</span><span>│   ├── db/           # Database setup and sessions
-</span><span>│   ├── models/       # SQLAlchemy models
-</span><span>│   ├── schemas/      # Pydantic schemas
-</span><span>│   ├── services/     # Business logic
-</span><span>│   └── main.py       # Application entry point
-</span><span>└── requirements.txt  # Project dependencies</span></code></div></div></div></pre>
+- **Framework:** React with TypeScript
+- **Bundler:** Vite
+- **Styling:** Tailwind CSS and Shadcn/ui
+- **REST:** Axios
+- **GraphQL Client:** Apollo Client
+
+## Repository Structure
+
+```
+Smart-Farm
+    ├── .dist
+    ├── .env
+    ├── .gitignore
+    ├── CONTRIBUTING.md
+    ├── LICENSE
+    ├── README.md
+    ├── backend
+    │   ├── .dist
+    │   ├── README.md
+    │   ├── alembic              # Database migrations
+    │   │   ├── README
+    │   │   ├── env.py
+    │   │   ├── script.py.mako
+    │   │   └── versions
+    │   │       ├── 28002713e436_init.py
+    │   │       └── c8bad824e9aa_add_care_instructions_and_watering_.py
+    │   ├── alembic.ini
+    │   ├── app
+    │   │   ├── __init__.py
+    │   │   ├── api               # API endpoints and GraphQL schema
+    │   │   │   ├── __init__.py
+    │   │   │   ├── api.py
+    │   │   │   ├── graphql
+    │   │   │   │   └── schema.py
+    │   │   │   └── v1
+    │   │   │       └── endpoints
+    │   │   │           └── auth.py
+    │   │   ├── core              # Core configuration and security
+    │   │   │   ├── __init__.py
+    │   │   │   ├── config.py
+    │   │   │   └── security.py
+    │   │   ├── db                # Database initialization and sessions
+    │   │   │   ├── __init__.py
+    │   │   │   ├── base.py
+    │   │   │   ├── init_db.py    # Run this script to initialize the database (smart_farm.db)
+    │   │   │   └── session.py
+    │   │   ├── main.py           # Application entry point
+    │   │   ├── models            # SQLAlchemy models
+    │   │   │   ├── __init__.py
+    │   │   │   ├── disease.py
+    │   │   │   ├── measurement.py
+    │   │   │   ├── plant.py
+    │   │   │   └── user.py
+    │   │   ├── schemas           # Pydantic schemas
+    │   │   │   ├── __init__.py
+    │   │   │   ├── disease.py
+    │   │   │   ├── measurement.py
+    │   │   │   ├── plant.py
+    │   │   │   └── user.py
+    │   │   └── services          # Business logic services
+    │   │       ├── auth_service.py
+    │   │       └── plant_service.py
+    │   ├── requirements.txt
+    └── frontend
+        ├── .gitignore
+        ├── README.md
+        ├── components.json
+        ├── eslint.config.js
+        ├── index.html
+        ├── package-lock.json
+        ├── package.json
+        ├── postcss.config.js
+        ├── public
+        │   └── robots.txt
+        ├── src
+        │   ├── App.tsx
+        │   ├── api             # Axios API calls
+        │   │   ├── auth.ts
+        │   │   └── axios.ts
+        │   ├── apollo          # Apollo Client configuration
+        │   │   └── client.ts
+        │   ├── components      # Reusable UI components and features
+        │   │   ├── auth
+        │   │   │   ├── LoginForm.tsx
+        │   │   │   └── RegisterForm.tsx
+        │   │   ├── diseases
+        │   │   │   ├── AddDiseaseForm.tsx
+        │   │   │   └── DiseaseList.tsx
+        │   │   ├── layout
+        │   │   │   ├── Header.tsx
+        │   │   │   ├── Layout.tsx
+        │   │   │   └── Sidebar.tsx
+        │   │   ├── measurements
+        │   │   │   ├── MeasurementChart.tsx
+        │   │   │   ├── MeasurementForm.tsx
+        │   │   │   └── MeasurementList.tsx
+        │   │   ├── plants
+        │   │   │   ├── AddPlantForm.tsx
+        │   │   │   ├── PlantCard.tsx
+        │   │   │   ├── PlantDetails.tsx
+        │   │   │   ├── PlantDetailsModal.tsx
+        │   │   │   ├── PlantList.tsx
+        │   │   │   └── PlantMeasurements.tsx
+        │   │   └── ui
+        │   │       ├── badge.tsx
+        │   │       ├── button.tsx
+        │   │       ├── card.tsx
+        │   │       ├── dialog.tsx
+        │   │       ├── input.tsx
+        │   │       ├── select.tsx
+        │   │       ├── table.tsx
+        │   │       └── use-toast.tsx
+        │   ├── contexts         # Global state and authentication contexts
+        │   │   └── AuthContext.tsx
+        │   ├── hooks            # Custom hooks for GraphQL operations and API calls
+        │   │   ├── useAddDiseaseGraphQL.ts
+        │   │   ├── useAddMeasurementGraphQL.ts
+        │   │   ├── useAddPlantGraphQL.ts
+        │   │   ├── useAllPlantsGraphQL.ts
+        │   │   ├── useAuth.ts
+        │   │   ├── useDeleteDiseaseGraphQL.ts
+        │   │   ├── useDeleteMeasurementGraphQL.ts
+        │   │   ├── useDeletePlantGraphQL.ts
+        │   │   ├── usePlantsGraphQL.ts
+        │   │   ├── useUpdateDiseaseGraphQL.ts
+        │   │   ├── useUpdateMeasurementGraphQL.ts
+        │   │   └── useUpdatePlantGraphQL.ts
+        │   ├── lib              # Utility functions and helpers
+        │   │   └── utils.ts
+        │   ├── main.tsx         # Frontend application entry point
+        │   ├── pages            # Page components for routing
+        │   │   ├── auth
+        │   │   │   ├── Login.tsx
+        │   │   │   └── Register.tsx
+        │   │   ├── dashboard
+        │   │   │   └── Dashboard.tsx
+        │   │   ├── myplants
+        │   │   │   └── MyPlants.tsx
+        │   │   └── settings
+        │   │       └── Settings.tsx
+        │   ├── styles           # Global styles (Tailwind CSS)
+        │   │   └── globals.css
+        │   ├── types            # TypeScript definitions
+        │   │   ├── auth.ts
+        │   │   ├── disease.ts
+        │   │   ├── measurement.ts
+        │   │   └── plant.ts
+        │   └── vite-env.d.ts
+        ├── tailwind.config.js
+        ├── tsconfig.app.json
+        ├── tsconfig.json
+        ├── tsconfig.node.json
+        └── vite.config.ts
+```
 
 ## Installation
 
-1. Clone the repository
+### Backend Setup
 
-<pre><div class="relative flex flex-col rounded-lg" bis_skin_checked="1"><div class="text-text-300 absolute pl-3 pt-2.5 text-xs" bis_skin_checked="1">bash</div><div class="pointer-events-none sticky my-0.5 ml-0.5 flex items-center justify-end px-1.5 py-1 mix-blend-luminosity top-0" bis_skin_checked="1"><div class="from-bg-300/90 to-bg-300/70 pointer-events-auto rounded-md bg-gradient-to-b p-0.5 backdrop-blur-md" bis_skin_checked="1"><button class="flex flex-row items-center gap-1 rounded-md p-1 py-0.5 text-xs transition-opacity delay-100 hover:bg-bg-200 opacity-60 hover:opacity-100"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 256 256" class="text-text-500 mr-px -translate-y-[0.5px]"><path d="M200,32H163.74a47.92,47.92,0,0,0-71.48,0H56A16,16,0,0,0,40,48V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V48A16,16,0,0,0,200,32Zm-72,0a32,32,0,0,1,32,32H96A32,32,0,0,1,128,32Zm72,184H56V48H82.75A47.93,47.93,0,0,0,80,64v8a8,8,0,0,0,8,8h80a8,8,0,0,0,8-8V64a47.93,47.93,0,0,0-2.75-16H200Z"></path></svg><span class="text-text-200 pr-0.5">Copy</span></button></div></div><div bis_skin_checked="1"><div class="code-block__code !my-0 !rounded-lg !text-sm !leading-relaxed" bis_skin_checked="1"><code class="language-bash"><span><span class="token">git</span><span> clone https://github.com/your-username/smart-farm.git
-</span></span><span><span></span><span class="token">cd</span><span> smart-farm/backend</span></span></code></div></div></div></pre>
+1. **Clone the repository:**
 
-2. Create and activate virtual environment
+   ```bash
+   git clone https://github.com/moxer-mmh/Smart-Farm.git
+   cd Smart-Farm/backend
+   ```
 
-<pre><div class="relative flex flex-col rounded-lg" bis_skin_checked="1"><div class="text-text-300 absolute pl-3 pt-2.5 text-xs" bis_skin_checked="1">bash</div><div class="pointer-events-none sticky my-0.5 ml-0.5 flex items-center justify-end px-1.5 py-1 mix-blend-luminosity top-0" bis_skin_checked="1"><div class="from-bg-300/90 to-bg-300/70 pointer-events-auto rounded-md bg-gradient-to-b p-0.5 backdrop-blur-md" bis_skin_checked="1"><button class="flex flex-row items-center gap-1 rounded-md p-1 py-0.5 text-xs transition-opacity delay-100 hover:bg-bg-200 opacity-60 hover:opacity-100"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 256 256" class="text-text-500 mr-px -translate-y-[0.5px]"><path d="M200,32H163.74a47.92,47.92,0,0,0-71.48,0H56A16,16,0,0,0,40,48V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V48A16,16,0,0,0,200,32Zm-72,0a32,32,0,0,1,32,32H96A32,32,0,0,1,128,32Zm72,184H56V48H82.75A47.93,47.93,0,0,0,80,64v8a8,8,0,0,0,8,8h80a8,8,0,0,0,8-8V64a47.93,47.93,0,0,0-2.75-16H200Z"></path></svg><span class="text-text-200 pr-0.5">Copy</span></button></div></div><div bis_skin_checked="1"><div class="code-block__code !my-0 !rounded-lg !text-sm !leading-relaxed" bis_skin_checked="1"><code class="language-bash"><span><span>python -m venv venv
-</span></span><span><span></span><span class="token">source</span><span> venv/bin/activate  </span><span class="token"># Linux/macOS</span><span>
-</span></span><span><span></span><span class="token"># or</span><span>
-</span></span><span><span>.</span><span class="token">\</span><span>venv</span><span class="token">\</span><span>Scripts</span><span class="token">\</span><span>activate  </span><span class="token"># Windows</span></span></code></div></div></div></pre>
+2. **Create and activate a virtual environment:**
 
-3. Install dependencies
+   ```bash
+   python -m venv venv
+   # On Linux/macOS:
+   source venv/bin/activate
+   # On Windows:
+   .\venv\Scripts\activate
+   ```
 
-<pre><div class="relative flex flex-col rounded-lg" bis_skin_checked="1"><div class="text-text-300 absolute pl-3 pt-2.5 text-xs" bis_skin_checked="1">bash</div><div class="pointer-events-none sticky my-0.5 ml-0.5 flex items-center justify-end px-1.5 py-1 mix-blend-luminosity top-0" bis_skin_checked="1"><div class="from-bg-300/90 to-bg-300/70 pointer-events-auto rounded-md bg-gradient-to-b p-0.5 backdrop-blur-md" bis_skin_checked="1"><button class="flex flex-row items-center gap-1 rounded-md p-1 py-0.5 text-xs transition-opacity delay-100 hover:bg-bg-200 opacity-60 hover:opacity-100"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 256 256" class="text-text-500 mr-px -translate-y-[0.5px]"><path d="M200,32H163.74a47.92,47.92,0,0,0-71.48,0H56A16,16,0,0,0,40,48V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V48A16,16,0,0,0,200,32Zm-72,0a32,32,0,0,1,32,32H96A32,32,0,0,1,128,32Zm72,184H56V48H82.75A47.93,47.93,0,0,0,80,64v8a8,8,0,0,0,8,8h80a8,8,0,0,0,8-8V64a47.93,47.93,0,0,0-2.75-16H200Z"></path></svg><span class="text-text-200 pr-0.5">Copy</span></button></div></div><div bis_skin_checked="1"><div class="code-block__code !my-0 !rounded-lg !text-sm !leading-relaxed" bis_skin_checked="1"><code class="language-bash"><span><span>pip </span><span class="token">install</span><span> -r requirements.txt</span></span></code></div></div></div></pre>
+3. **Install dependencies:**
 
-4. Set up environment variables
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-<pre><div class="relative flex flex-col rounded-lg" bis_skin_checked="1"><div class="text-text-300 absolute pl-3 pt-2.5 text-xs" bis_skin_checked="1">bash</div><div class="pointer-events-none sticky my-0.5 ml-0.5 flex items-center justify-end px-1.5 py-1 mix-blend-luminosity top-0" bis_skin_checked="1"><div class="from-bg-300/90 to-bg-300/70 pointer-events-auto rounded-md bg-gradient-to-b p-0.5 backdrop-blur-md" bis_skin_checked="1"><button class="flex flex-row items-center gap-1 rounded-md p-1 py-0.5 text-xs transition-opacity delay-100 hover:bg-bg-200 opacity-60 hover:opacity-100"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 256 256" class="text-text-500 mr-px -translate-y-[0.5px]"><path d="M200,32H163.74a47.92,47.92,0,0,0-71.48,0H56A16,16,0,0,0,40,48V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V48A16,16,0,0,0,200,32Zm-72,0a32,32,0,0,1,32,32H96A32,32,0,0,1,128,32Zm72,184H56V48H82.75A47.93,47.93,0,0,0,80,64v8a8,8,0,0,0,8,8h80a8,8,0,0,0,8-8V64a47.93,47.93,0,0,0-2.75-16H200Z"></path></svg><span class="text-text-200 pr-0.5">Copy</span></button></div></div><div bis_skin_checked="1"><div class="code-block__code !my-0 !rounded-lg !text-sm !leading-relaxed" bis_skin_checked="1"><code class="language-bash"><span><span class="token">cp</span><span> .env.example .env
-</span></span><span><span></span><span class="token"># Edit .env with your configurations</span></span></code></div></div></div></pre>
+4. **Set up environment variables:**
 
-5. Run database migrations
+   ```bash
+   cp .env.example .env
+   # Then edit .env with your configurations
+   ```
 
-<pre><div class="relative flex flex-col rounded-lg" bis_skin_checked="1"><div class="text-text-300 absolute pl-3 pt-2.5 text-xs" bis_skin_checked="1">bash</div><div class="pointer-events-none sticky my-0.5 ml-0.5 flex items-center justify-end px-1.5 py-1 mix-blend-luminosity top-0" bis_skin_checked="1"><div class="from-bg-300/90 to-bg-300/70 pointer-events-auto rounded-md bg-gradient-to-b p-0.5 backdrop-blur-md" bis_skin_checked="1"><button class="flex flex-row items-center gap-1 rounded-md p-1 py-0.5 text-xs transition-opacity delay-100 hover:bg-bg-200 opacity-60 hover:opacity-100"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 256 256" class="text-text-500 mr-px -translate-y-[0.5px]"><path d="M200,32H163.74a47.92,47.92,0,0,0-71.48,0H56A16,16,0,0,0,40,48V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V48A16,16,0,0,0,200,32Zm-72,0a32,32,0,0,1,32,32H96A32,32,0,0,1,128,32Zm72,184H56V48H82.75A47.93,47.93,0,0,0,80,64v8a8,8,0,0,0,8,8h80a8,8,0,0,0,8-8V64a47.93,47.93,0,0,0-2.75-16H200Z"></path></svg><span class="text-text-200 pr-0.5">Copy</span></button></div></div><div bis_skin_checked="1"><div class="code-block__code !my-0 !rounded-lg !text-sm !leading-relaxed" bis_skin_checked="1"><code class="language-bash"><span><span>alembic upgrade </span><span class="token">head</span></span></code></div></div></div></pre>
+5. **Initialize the Database:**
 
-6. Start the server
+   > **Note:** The file `smart_farm.db` is not provided. You must initialize the database by running:
+   >
+   > ```bash
+   > python -m app.db.init_db
+   > ```
 
-<pre><div class="relative flex flex-col rounded-lg" bis_skin_checked="1"><div class="text-text-300 absolute pl-3 pt-2.5 text-xs" bis_skin_checked="1">bash</div><div class="pointer-events-none sticky my-0.5 ml-0.5 flex items-center justify-end px-1.5 py-1 mix-blend-luminosity top-0" bis_skin_checked="1"><div class="from-bg-300/90 to-bg-300/70 pointer-events-auto rounded-md bg-gradient-to-b p-0.5 backdrop-blur-md" bis_skin_checked="1"><button class="flex flex-row items-center gap-1 rounded-md p-1 py-0.5 text-xs transition-opacity delay-100 hover:bg-bg-200 opacity-60 hover:opacity-100"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 256 256" class="text-text-500 mr-px -translate-y-[0.5px]"><path d="M200,32H163.74a47.92,47.92,0,0,0-71.48,0H56A16,16,0,0,0,40,48V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V48A16,16,0,0,0,200,32Zm-72,0a32,32,0,0,1,32,32H96A32,32,0,0,1,128,32Zm72,184H56V48H82.75A47.93,47.93,0,0,0,80,64v8a8,8,0,0,0,8,8h80a8,8,0,0,0,8-8V64a47.93,47.93,0,0,0-2.75-16H200Z"></path></svg><span class="text-text-200 pr-0.5">Copy</span></button></div></div><div bis_skin_checked="1"><div class="code-block__code !my-0 !rounded-lg !text-sm !leading-relaxed" bis_skin_checked="1"><code class="language-bash"><span><span>uvicorn app.main:app --reload</span></span></code></div></div></div></pre>
+6. **Run Database Migrations:**
+
+   ```bash
+   alembic upgrade head
+   ```
+
+7. **Start the Backend Server:**
+
+   ```bash
+   uvicorn app.main:app --reload
+   ```
+
+### Frontend Setup
+
+1. **Navigate to the frontend directory:**
+
+   ```bash
+   cd ../frontend
+   ```
+
+2. **Install dependencies:**
+
+   ```bash
+   npm install
+   ```
+
+3. **Run the Frontend Development Server:**
+
+   ```bash
+   npm run dev
+   ```
+
+   The frontend server will typically run on [http://localhost:5173](http://localhost:5173) (or on another port specified in your project configuration).
 
 ## API Documentation
 
-Once the server is running, access the API documentation at:
+Once the backend server is running, you can access the API documentation via:
 
-* Swagger UI: `http://localhost:8000/docs`
-* ReDoc: `http://localhost:8000/redoc`
+- **Swagger UI:** [http://localhost:8000/docs](http://localhost:8000/docs)
+- **ReDoc:** [http://localhost:8000/redoc](http://localhost:8000/redoc)
+
+## Contributing
+
+We welcome contributions! Please review our [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests.
+
+## License
+
+This project is licensed under the terms of the [LICENSE](LICENSE).

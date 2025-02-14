@@ -1,5 +1,4 @@
 from app.db.base import Base, engine
-from app.models.user import User  # Import all your models here
 
 
 def init_db():
