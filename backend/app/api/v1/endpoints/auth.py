@@ -4,7 +4,7 @@ from sqlalchemy.orm import Session
 from datetime import timedelta
 
 from app.db.session import get_db
-from app.schemas.user import Token, UserCreate
+from app.schemas.user import UserCreate , TokenWithUser
 from app.services.auth_service import AuthService
 from app.core.security import create_access_token
 from app.core.config import settings
@@ -25,7 +25,7 @@ def register_user(user: UserCreate, db: Session = Depends(get_db)):
 
 
 # User login endpoint
-@router.post("/login", response_model=Token)
+@router.post("/login", response_model=TokenWithUser)
 def login(
     form_data: OAuth2PasswordRequestForm = Depends(), db: Session = Depends(get_db)
 ):
@@ -39,4 +39,4 @@ def login(
     access_token = create_access_token(
         data={"sub": user.username, "id": user.id}, expires_delta=access_token_expires
     )
-    return {"access_token": access_token, "token_type": "bearer"}
+    return {"access_token": access_token, "token_type": "bearer", "user": user}

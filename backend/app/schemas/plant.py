@@ -11,12 +11,15 @@ class PlantBase(BaseModel):
     species: str
     variety: Optional[str] = None
     location: Optional[str] = None
+    health_status: str = None
+    care_instructions: Optional[str] = None
+    watering_frequency: Optional[float] = None
     growth_stage: Optional[str] = None
     height: Optional[float] = None
 
     @field_validator("species")
     def validate_species(cls, v):
-        valid_species = ["tomato"]
+        valid_species = ["tomato", "potato"]
         if v.lower() not in valid_species:
             raise ValueError(
                 f'Invalid species. Must be one of: {", ".join(valid_species)}'

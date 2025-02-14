@@ -15,6 +15,8 @@ class Plant(Base):
     last_watered = Column(DateTime)
     health_status = Column(String, default="healthy")
     location = Column(String)
+    care_instructions = Column(String)
+    watering_frequency = Column(Float)
     growth_stage = Column(String)
     height = Column(Float)
     user_id = Column(Integer, ForeignKey("users.id"))

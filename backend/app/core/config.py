@@ -16,7 +16,7 @@ class Settings(BaseSettings):
     PROJECT_NAME: str = "Smart Farm API"
 
     # CORS
-    BACKEND_CORS_ORIGINS: list[str] = ["http://localhost:3000"]  # Frontend URL
+    BACKEND_CORS_ORIGINS: list[str] = ["http://localhost:5173"]  # Frontend URL
 
     class Config:
         env_file = ".env"
